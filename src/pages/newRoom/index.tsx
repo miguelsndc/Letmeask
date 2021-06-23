@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import IllustrationImg from '../../assets/images/illustration.svg'
 import LogoImg from '../../assets/images/logo.svg'
-import EnterRoomIconImg from '../../assets/images/enter.svg'
 
 import { Button } from '../../components/Button/'
 
@@ -24,10 +23,7 @@ export function NewRoom() {
           <h2>Criar uma nova Sala</h2>
           <form>
             <input type='text' placeholder='Nome da Sala' />
-            <Button type='submit'>
-              <img src={EnterRoomIconImg} alt='Criar sala' />
-              Criar sala
-            </Button>
+            <Button type='submit'>Criar sala</Button>
           </form>
           <p>
             Quer entrar em uma sala já existente?{' '}

@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 
 import { Button } from '../../components/Button/'
 
@@ -7,6 +8,7 @@ import {
   MainContent,
   Separator,
   CreateRoomBtn,
+  ErrorMsg,
 } from '../../styles/pages/shared'
 
 import { useAuth } from '../../hooks/useAuth'
@@ -15,10 +17,19 @@ import IllustrationImg from '../../assets/images/illustration.svg'
 import GoogleIconImg from '../../assets/images/google-icon.svg'
 import LogoImg from '../../assets/images/logo.svg'
 import EnterRoomIconImg from '../../assets/images/enter.svg'
+type FormData = {
+  roomCode: string
+}
 
 export function Home() {
   const history = useHistory()
   const { signInWithGoogle, user } = useAuth()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>()
 
   async function handleCreateRoom() {
     if (!user) {
@@ -50,8 +61,14 @@ export function Home() {
 
           <Separator>ou entre em uma sala</Separator>
 
-          <form>
-            <input type='text' placeholder='Digite o código da sala' />
+          <form onSubmit={handleSubmit(handleJoinRoom)}>
+            <input
+              type='text'
+              placeholder='Digite o código da sala'
+              {...register('roomCode', { required: true })}
+            />
+            {error && <ErrorMsg>{error}.</ErrorMsg>}
+            {errors.roomCode && <ErrorMsg>Digite o código da sala.</ErrorMsg>}
             <Button type='submit'>
               <img src={EnterRoomIconImg} alt='Entrar na sala' />
               Entrar na sala

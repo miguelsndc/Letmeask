@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import IllustrationImg from '../../assets/images/illustration.svg'
 import LogoImg from '../../assets/images/logo.svg'
 
@@ -7,6 +7,12 @@ import { Button } from '../../components/Button/'
 import { PageAuth, MainContent } from '../../styles/pages/shared'
 
 export function NewRoom() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>()
+
   return (
     <PageAuth>
       <aside>
@@ -21,8 +27,13 @@ export function NewRoom() {
         <MainContent>
           <img src={LogoImg} alt='Letmeask' />
           <h2>Criar uma nova Sala</h2>
-          <form>
-            <input type='text' placeholder='Nome da Sala' />
+          <form onSubmit={handleSubmit(handleCreateRoom)}>
+            <input
+              type='text'
+              placeholder='Nome da Sala'
+              {...register('newRoom', { required: true })}
+            />
+            {errors.newRoom && <ErrorMsg>Digite o nome da sala</ErrorMsg>}
             <Button type='submit'>Criar sala</Button>
           </form>
           <p>

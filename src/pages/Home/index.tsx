@@ -5,7 +5,12 @@ import EnterRoomIconImg from '../../assets/images/enter.svg'
 
 import { Button } from '../../components/Button/'
 
-import { PageAuth, MainContent, Separator, CreateRoomBtn } from './styles'
+import {
+  PageAuth,
+  MainContent,
+  Separator,
+  CreateRoomBtn,
+} from '../../styles/pages/shared'
 
 export function Home() {
   return (

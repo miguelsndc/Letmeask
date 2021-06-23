@@ -146,3 +146,10 @@ export const Separator = styled.div`
     margin-left: 1rem;
   }
 `
+
+export const ErrorMsg = styled.div`
+  color: ${props => props.theme.danger};
+  text-align: left;
+  margin-top: 5px;
+  font-weight: 500;
+`

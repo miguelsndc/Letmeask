@@ -1,17 +1,43 @@
 import { useForm } from 'react-hook-form'
+
+import { Link, useHistory } from 'react-router-dom'
 import IllustrationImg from '../../assets/images/illustration.svg'
 import LogoImg from '../../assets/images/logo.svg'
+
+import { ErrorMsg } from '../../styles/pages/shared'
 
 import { Button } from '../../components/Button/'
 
 import { PageAuth, MainContent } from '../../styles/pages/shared'
+import { database } from '../../services/firebase'
+import { useAuth } from '../../hooks/useAuth'
+
+type FormData = {
+  newRoom: string
+}
 
 export function NewRoom() {
+  const { user } = useAuth()
+  const history = useHistory()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>()
+
+  async function handleCreateRoom(data: FormData) {
+    const { newRoom } = data
+
+    const roomRef = database.ref('rooms')
+
+    const firebaseRoom = await roomRef.push({
+      title: newRoom,
+      authorId: user?.id,
+    })
+
+    history.push(`/rooms/${firebaseRoom.key}`)
+  }
 
   return (
     <PageAuth>

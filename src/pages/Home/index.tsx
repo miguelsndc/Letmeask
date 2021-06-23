@@ -13,6 +13,17 @@ import {
 } from '../../styles/pages/shared'
 
 export function Home() {
+  const history = useHistory()
+  const { signInWithGoogle, user } = useAuth()
+
+  async function handleCreateRoom() {
+    if (!user) {
+      await signInWithGoogle()
+    }
+
+    history.push('/rooms/new')
+  }
+
   return (
     <PageAuth>
       <aside>
@@ -26,7 +37,7 @@ export function Home() {
       <main>
         <MainContent>
           <img src={LogoImg} alt='Letmeask' />
-          <CreateRoomBtn>
+          <CreateRoomBtn onClick={handleCreateRoom}>
             <img src={GoogleIconImg} alt='Logo do Google' />
             Crie sua sala com o google
           </CreateRoomBtn>

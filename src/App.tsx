@@ -6,6 +6,8 @@ import { GlobalStyles } from './styles/globals'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+import { AuthProvider } from './context/AuthContext'
+
 import LightTheme from './styles/themes/light'
 
 function App() {
@@ -14,8 +16,10 @@ function App() {
       <GlobalStyles />
       <Router>
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/rooms/new' component={NewRoom} />
+          <AuthProvider>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/rooms/new' component={NewRoom} />
+          </AuthProvider>
         </Switch>
       </Router>
     </ThemeProvider>

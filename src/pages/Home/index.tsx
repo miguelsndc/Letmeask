@@ -17,6 +17,8 @@ import IllustrationImg from '../../assets/images/illustration.svg'
 import GoogleIconImg from '../../assets/images/google-icon.svg'
 import LogoImg from '../../assets/images/logo.svg'
 import EnterRoomIconImg from '../../assets/images/enter.svg'
+import { database } from '../../services/firebase'
+import { useState } from 'react'
 type FormData = {
   roomCode: string
 }
@@ -39,6 +41,18 @@ export function Home() {
     history.push('/rooms/new')
   }
 
+  async function handleJoinRoom(data: FormData) {
+    const { roomCode } = data
+
+    const roomRef = await database.ref(`/rooms/${roomCode}`).get()
+
+    if (!roomRef.exists()) {
+      setError('Esta sala não existe')
+      return
+    }
+
+    history.push(`/rooms/${roomCode}`)
+  }
   return (
     <PageAuth>
       <aside>

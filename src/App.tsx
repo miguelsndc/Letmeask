@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
+import { Toaster } from 'react-hot-toast'
 
 import { NewRoom } from './pages/newRoom'
 import { Home } from './pages/Home/'
@@ -15,6 +16,7 @@ function App() {
   return (
     <ThemeProvider theme={LightTheme}>
       <GlobalStyles />
+      <Toaster />
       <Router>
         <Switch>
           <AuthProvider>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import IllustrationImg from '../../assets/images/illustration.svg'
 import LogoImg from '../../assets/images/logo.svg'
 import EnterRoomIconImg from '../../assets/images/enter.svg'
@@ -29,7 +30,8 @@ export function NewRoom() {
             </Button>
           </form>
           <p>
-            Quer entrar em uma sala já existente? <a href='/'>Clique aqui</a>{' '}
+            Quer entrar em uma sala já existente?{' '}
+            <Link to='/'>Clique aqui</Link>{' '}
           </p>
         </MainContent>
       </main>

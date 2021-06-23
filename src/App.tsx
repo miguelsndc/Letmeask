@@ -19,15 +19,13 @@ function App() {
       <GlobalStyles />
       <Toaster />
       <Router>
-        <Switch>
-          <AuthProvider>
+        <AuthProvider>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/rooms/new' component={NewRoom} />
             <Route exact path='/rooms/:id' component={Room} />
           </Switch>
-          </AuthProvider>
-        </Switch>
+        </AuthProvider>
       </Router>
     </ThemeProvider>
   )

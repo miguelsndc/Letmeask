@@ -1,7 +1,4 @@
-import IllustrationImg from '../../assets/images/illustration.svg'
-import GoogleIconImg from '../../assets/images/google-icon.svg'
-import LogoImg from '../../assets/images/logo.svg'
-import EnterRoomIconImg from '../../assets/images/enter.svg'
+import { useHistory } from 'react-router-dom'
 
 import { Button } from '../../components/Button/'
 
@@ -12,6 +9,12 @@ import {
   CreateRoomBtn,
 } from '../../styles/pages/shared'
 
+import { useAuth } from '../../hooks/useAuth'
+
+import IllustrationImg from '../../assets/images/illustration.svg'
+import GoogleIconImg from '../../assets/images/google-icon.svg'
+import LogoImg from '../../assets/images/logo.svg'
+import EnterRoomIconImg from '../../assets/images/enter.svg'
 export function Home() {
   const history = useHistory()
   const { signInWithGoogle, user } = useAuth()

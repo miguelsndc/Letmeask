@@ -12,6 +12,7 @@ import { GlobalStyles } from './styles/globals'
 import LightTheme from './styles/themes/light'
 
 import './services/firebase'
+
 function App() {
   return (
     <ThemeProvider theme={LightTheme}>
@@ -20,8 +21,11 @@ function App() {
       <Router>
         <Switch>
           <AuthProvider>
+          <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/rooms/new' component={NewRoom} />
+            <Route exact path='/rooms/:id' component={Room} />
+          </Switch>
           </AuthProvider>
         </Switch>
       </Router>

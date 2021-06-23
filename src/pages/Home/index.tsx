@@ -19,12 +19,14 @@ import LogoImg from '../../assets/images/logo.svg'
 import EnterRoomIconImg from '../../assets/images/enter.svg'
 import { database } from '../../services/firebase'
 import { useState } from 'react'
+
 type FormData = {
   roomCode: string
 }
 
 export function Home() {
   const history = useHistory()
+  const [error, setError] = useState('')
   const { signInWithGoogle, user } = useAuth()
 
   const {

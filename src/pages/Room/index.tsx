@@ -12,29 +12,7 @@ import { database } from '../../services/firebase'
 import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
 
-type FirebaseQuestions = Record<
-  string,
-  {
-    author: {
-      name: string
-      avatar: string
-    }
-    content: string
-    isAnswered: boolean
-    isHighlighted: boolean
-  }
->
-
-type Question = {
-  id: string
-  author: {
-    name: string
-    avatar: string
-  }
-  content: string
-  isAnswered: boolean
-  isHighlighted: boolean
-}
+import * as S from '../../styles/pages/Room'
 
 type RoomParams = {
   id: string
@@ -98,7 +76,7 @@ export function Room() {
     }
   }
   return (
-    <PageRoom>
+    <S.PageRoom>
       <header>
         <div>
           <img src={LogoImg} alt='Letmeask' />
@@ -106,24 +84,23 @@ export function Room() {
         </div>
       </header>
 
-      <Content>
-        <RoomTitle>
+      <S.Content>
+        <S.RoomTitle>
           <h1>Sala {title}</h1>
-          {questions.length && <span>{questions.length} perguntas(s)</span>}
-        </RoomTitle>
-
+          {questions.length && <span>{questions.length} pergunta(s)</span>}
+        </S.RoomTitle>
         <form onSubmit={handleSubmit(handleSendQuestion)}>
           <textarea
             placeholder='O que você quer perguntar?'
             {...register('newQuestion')}
           />
 
-          <FormFooter>
+          <S.FormFooter>
             {isAuthenticated ? (
-              <UserInfo>
+              <S.UserInfo>
                 <img src={user?.avatar} alt={user?.name} />
                 <span>{user?.name}</span>
-              </UserInfo>
+              </S.UserInfo>
             ) : (
               <span>
                 Para enviar uma pergunta
@@ -134,7 +111,7 @@ export function Room() {
             <Button type='submit' disabled={!isAuthenticated}>
               Enviar pergunta
             </Button>
-          </FormFooter>
+          </S.FormFooter>
         </form>
         <S.QuestionList>
           {questions.length &&
@@ -175,5 +152,7 @@ export function Room() {
               )
             })}
         </S.QuestionList>
+      </S.Content>
+    </S.PageRoom>
   )
 }

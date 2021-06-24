@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const RoomCodeBtn = styled.button`
+export const RoomCode = styled.button`
   height: 2.5rem;
   border-radius: 8px;
   overflow: hidden;

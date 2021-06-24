@@ -3,13 +3,7 @@ import { useForm } from 'react-hook-form'
 
 import { Button } from '../../components/Button/'
 
-import {
-  PageAuth,
-  MainContent,
-  Separator,
-  CreateRoomBtn,
-  ErrorMsg,
-} from '../../styles/pages/shared'
+import * as S from '../../styles/pages/shared'
 
 import { useAuth } from '../../hooks/useAuth'
 
@@ -56,7 +50,7 @@ export function Home() {
     history.push(`/rooms/${roomCode}`)
   }
   return (
-    <PageAuth>
+    <S.PageAuth>
       <aside>
         <img
           src={IllustrationImg}
@@ -67,15 +61,15 @@ export function Home() {
       </aside>
 
       <main>
-        <MainContent>
+        <S.MainContent>
           <img src={LogoImg} alt='Letmeask' />
 
-          <CreateRoomBtn onClick={handleCreateRoom}>
+          <S.CreateRoomBtn onClick={handleCreateRoom}>
             <img src={GoogleIconImg} alt='Logo do Google' />
             Crie sua sala com o google
-          </CreateRoomBtn>
+          </S.CreateRoomBtn>
 
-          <Separator>ou entre em uma sala</Separator>
+          <S.Separator>ou entre em uma sala</S.Separator>
 
           <form onSubmit={handleSubmit(handleJoinRoom)}>
             <input
@@ -83,15 +77,17 @@ export function Home() {
               placeholder='Digite o código da sala'
               {...register('roomCode', { required: true })}
             />
-            {error && <ErrorMsg>{error}.</ErrorMsg>}
-            {errors.roomCode && <ErrorMsg>Digite o código da sala.</ErrorMsg>}
+            {error && <S.ErrorMsg>{error}.</S.ErrorMsg>}
+            {errors.roomCode && (
+              <S.ErrorMsg>Digite o código da sala.</S.ErrorMsg>
+            )}
             <Button type='submit'>
               <img src={EnterRoomIconImg} alt='Entrar na sala' />
               Entrar na sala
             </Button>
           </form>
-        </MainContent>
+        </S.MainContent>
       </main>
-    </PageAuth>
+    </S.PageAuth>
   )
 }

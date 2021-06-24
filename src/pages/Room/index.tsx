@@ -1,16 +1,16 @@
-import LogoImg from '../../assets/images/logo.svg'
-
 import { useParams } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 
 import { Button } from '../../components/Button'
 import { RoomCode } from '../../components/RoomCode'
+import { Question } from '../../components/Question'
 
 import { useRoom } from '../../hooks/useRoom'
 import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 
+import LogoImg from '../../assets/images/logo.svg'
 import toast from 'react-hot-toast'
-import { useEffect, useState } from 'react'
 
 import * as S from '../../styles/pages/Room'
 
@@ -23,9 +23,8 @@ type FormData = {
 }
 
 export function Room() {
-  const { register, handleSubmit, reset } = useForm<FormData>()
   const { user } = useAuth()
-
+  const { register, handleSubmit, reset } = useForm<FormData>()
   const params = useParams<RoomParams>()
 
   const roomId = params.id
@@ -75,6 +74,7 @@ export function Room() {
       })
     }
   }
+
   return (
     <S.PageRoom>
       <header>

@@ -29,6 +29,13 @@ export const Button = styled.button<ButtonProps>`
       color: #fff;
     `}
   
+  ${props =>
+    props.variant === 'secondary' &&
+    css`
+      background: ${props => props.theme.grayLight};
+      color: ${props => props.theme.grayDark};
+    `}
+
   padding: 0 2rem;
 
   border: none;

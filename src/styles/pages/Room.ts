@@ -1,4 +1,8 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+type LikeButtonProps = {
+  liked: string | undefined
+}
 
 export const PageRoom = styled.div`
   header {
@@ -16,6 +20,7 @@ export const PageRoom = styled.div`
       & > img {
         max-height: 3rem;
       }
+
       & > div {
         display: flex;
         align-items: center;

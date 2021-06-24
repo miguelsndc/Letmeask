@@ -8,7 +8,7 @@ import { ErrorMsg } from '../../styles/pages/shared'
 
 import { Button } from '../../components/Button/'
 
-import { PageAuth, MainContent } from '../../styles/pages/shared'
+import * as S from '../../styles/pages/shared'
 import { database } from '../../services/firebase'
 import { useAuth } from '../../hooks/useAuth'
 
@@ -40,7 +40,7 @@ export function NewRoom() {
   }
 
   return (
-    <PageAuth>
+    <S.PageAuth>
       <aside>
         <img
           src={IllustrationImg}
@@ -50,7 +50,7 @@ export function NewRoom() {
         <p>Aprenda e compartilhe conhecimento com outras pessoas</p>
       </aside>
       <main>
-        <MainContent>
+        <S.MainContent>
           <img src={LogoImg} alt='Letmeask' />
           <h2>Criar uma nova Sala</h2>
           <form onSubmit={handleSubmit(handleCreateRoom)}>
@@ -59,15 +59,15 @@ export function NewRoom() {
               placeholder='Nome da Sala'
               {...register('newRoom', { required: true })}
             />
-            {errors.newRoom && <ErrorMsg>Digite o nome da sala</ErrorMsg>}
+            {errors.newRoom && <S.ErrorMsg>Digite o nome da sala</S.ErrorMsg>}
             <Button type='submit'>Criar sala</Button>
           </form>
           <p>
             Quer entrar em uma sala já existente?{' '}
             <Link to='/'>Clique aqui</Link>{' '}
           </p>
-        </MainContent>
+        </S.MainContent>
       </main>
-    </PageAuth>
+    </S.PageAuth>
   )
 }

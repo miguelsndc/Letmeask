@@ -5,14 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { RoomCode } from '../../components/RoomCode'
 
-import {
-  PageRoom,
-  Content,
-  RoomTitle,
-  FormFooter,
-  UserInfo,
-} from '../../styles/pages/Room'
-import { useForm } from 'react-hook-form'
+import { useRoom } from '../../hooks/useRoom'
 import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 
@@ -57,35 +50,10 @@ export function Room() {
 
   const params = useParams<RoomParams>()
 
-  const [questions, setQuestions] = useState<Question[]>([])
-  const [title, setTitle] = useState('')
-
-  const isAuthenticated = !!user
   const roomId = params.id
+  const isAuthenticated = !!user
 
-  useEffect(() => {
-    const roomRef = database.ref(`/rooms/${roomId}`)
-
-    roomRef.on('value', room => {
-      const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {}
-
-      const parsedQuestions = Object.entries(firebaseQuestions).map(
-        ([key, value]) => {
-          return {
-            id: key,
-            content: value.content,
-            author: value.author,
-            isHighlighted: value.isAnswered,
-            isAnswered: value.isAnswered,
-          }
-        }
-      )
-
-      setTitle(databaseRoom.title)
-      setQuestions(parsedQuestions)
-    })
-  }, [roomId])
+  const { questions, title } = useRoom(roomId)
 
   async function handleSendQuestion(data: FormData) {
     const { newQuestion } = data

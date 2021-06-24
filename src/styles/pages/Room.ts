@@ -124,6 +124,10 @@ export const UserInfo = styled.div`
   }
 `
 
+export const QuestionList = styled.section`
+  margin-top: 2rem;
+`
+
 export const LikeButton = styled.button<LikeButtonProps>`
   display: flex;
   align-items: flex-end;

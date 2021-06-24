@@ -136,8 +136,18 @@ export function Room() {
             </Button>
           </FormFooter>
         </form>
-        {JSON.stringify(questions)}
-      </Content>
-    </PageRoom>
+        <S.QuestionList>
+          {questions.length &&
+            questions.map(question => {
+              return (
+                <Question
+                  key={question.id}
+                  content={question.content}
+                  author={question.author}
+                >
+                </Question>
+              )
+            })}
+        </S.QuestionList>
   )
 }

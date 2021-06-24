@@ -9,8 +9,18 @@ export const Button = styled.button<ButtonProps>`
   border-radius: 8px;
   font-weight: 500;
 
+  ${props =>
+    props.variant === 'outlined' &&
+    css`
+      background: transparent;
+      box-shadow: 0px 0px 5px ${props.theme.purple};
+      color: ${props.theme.purple};
+
+      &:hover {
   background: ${props => props.theme.purple};
   color: ${props => props.theme.white};
+      }
+    `}
   padding: 0 2rem;
 
   border: none;

@@ -21,6 +21,14 @@ export const Button = styled.button<ButtonProps>`
   color: ${props => props.theme.white};
       }
     `}
+
+  ${props =>
+    props.variant === 'danger' &&
+    css`
+      background: ${props => props.theme.danger};
+      color: #fff;
+    `}
+  
   padding: 0 2rem;
 
   border: none;

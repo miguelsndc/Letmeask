@@ -17,8 +17,8 @@ export const Button = styled.button<ButtonProps>`
       color: ${props.theme.purple};
 
       &:hover {
-  background: ${props => props.theme.purple};
-  color: ${props => props.theme.white};
+        background: ${props => props.theme.purple};
+        color: ${props => props.theme.white};
       }
     `}
 
@@ -59,17 +59,11 @@ export const Button = styled.button<ButtonProps>`
 
   cursor: pointer;
 
-  border: none;
-
   img {
     margin-right: 8px;
   }
 
   transition: filter 0.2s;
-
-  &:not(:disabled):hover {
-    filter: brightness(0.9);
-  }
 
   &:disabled {
     opacity: 0.6;

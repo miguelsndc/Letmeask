@@ -36,6 +36,17 @@ export const Button = styled.button<ButtonProps>`
       color: ${props => props.theme.grayDark};
     `}
 
+  ${props =>
+    !props.variant &&
+    css`
+      background: ${props => props.theme.purple};
+      color: ${props => props.theme.white};
+
+      &:not(:disabled):hover {
+        filter: brightness(0.9);
+      }
+    `}
+
   padding: 0 2rem;
 
   border: none;
@@ -45,6 +56,7 @@ export const Button = styled.button<ButtonProps>`
   justify-content: center;
 
   transition: all 0.2s;
+
   cursor: pointer;
 
   border: none;

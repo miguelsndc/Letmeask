@@ -123,3 +123,26 @@ export const UserInfo = styled.div`
     font-size: 0.875rem;
   }
 `
+
+export const LikeButton = styled.button<LikeButtonProps>`
+  display: flex;
+  align-items: flex-end;
+  color: ${props => props.theme.grayDark};
+  gap: 8px;
+
+  transition: filter 0.2s;
+
+  ${props =>
+    props.liked &&
+    css`
+      color: ${props => props.theme.purple};
+
+      svg path {
+        stroke: ${props => props.theme.purple};
+      }
+    `}
+
+  &:hover {
+    filter: brightness(0.5);
+  }
+`

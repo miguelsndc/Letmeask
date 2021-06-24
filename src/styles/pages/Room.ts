@@ -20,8 +20,10 @@ export const PageRoom = styled.div`
   }
 `
 export const Content = styled.main`
-  max-width: 800px;
+  max-width: 832px;
   margin: 0 auto;
+
+  padding: 0 1.5rem;
 
   form {
     textarea {

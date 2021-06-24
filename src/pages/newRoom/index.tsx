@@ -4,8 +4,6 @@ import { Link, useHistory } from 'react-router-dom'
 import IllustrationImg from '../../assets/images/illustration.svg'
 import LogoImg from '../../assets/images/logo.svg'
 
-import { ErrorMsg } from '../../styles/pages/shared'
-
 import { Button } from '../../components/Button/'
 
 import * as S from '../../styles/pages/shared'

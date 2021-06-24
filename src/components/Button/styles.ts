@@ -1,6 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Button = styled.button`
+type ButtonProps = {
+  variant?: string
+}
+
+export const Button = styled.button<ButtonProps>`
   height: 3.125rem;
   border-radius: 8px;
   font-weight: 500;
@@ -9,10 +13,13 @@ export const Button = styled.button`
   color: ${props => props.theme.white};
   padding: 0 2rem;
 
+  border: none;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
+  transition: all 0.2s;
   cursor: pointer;
 
   border: none;

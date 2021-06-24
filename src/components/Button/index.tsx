@@ -1,8 +1,10 @@
 import { ButtonHTMLAttributes } from 'react'
 import * as S from './styles'
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: 'danger' | 'outlined' | 'secondary'
+}
 
-export function Button(props: ButtonProps) {
-  return <S.Button {...props} />
+export function Button({ variant, ...rest }: ButtonProps) {
+  return <S.Button variant={variant} {...rest} />
 }

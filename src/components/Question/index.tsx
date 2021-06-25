@@ -16,8 +16,8 @@ export function Question({
   children,
   author,
   content,
-  isAnswered = false,
-  isHighlighted = false,
+  isAnswered,
+  isHighlighted,
 }: QuestionProps) {
   return (
     <S.Question isAnswered={isAnswered} isHighlighted={isHighlighted}>

@@ -13,8 +13,11 @@ import LogoImg from '../../assets/images/logo.svg'
 import CheckImg from '../../assets/images/check.svg'
 import AnswerImg from '../../assets/images/answer.svg'
 import DeleteImg from '../../assets/images/delete.svg'
+import EmptyQuestionsImg from '../../assets/images/empty-questions.svg'
 
 import * as S from '../../styles/pages/Room'
+import { useEffect } from 'react'
+import { useAuth } from '../../hooks/useAuth'
 
 type RoomParams = {
   id: string
@@ -23,6 +26,7 @@ type RoomParams = {
 Modal.setAppElement('#confirmModal')
 
 export function AdminRoom() {
+  const { user } = useAuth()
   const params = useParams<RoomParams>()
   const history = useHistory()
 
@@ -87,12 +91,12 @@ export function AdminRoom() {
 
       <S.Content>
         <S.RoomTitle>
-          <h1>Sala {title}</h1>
+          <h1>{title}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </S.RoomTitle>
 
         <S.QuestionList>
-          {questions.length > 0 &&
+          {questions.length > 0 ? (
             questions.map(question => {
               return (
                 <Question
@@ -102,7 +106,7 @@ export function AdminRoom() {
                   isAnswered={question.isAnswered}
                   isHighlighted={question.isHighlighted}
                 >
-                  {question.isAnswered || (
+                  {!question.isAnswered && (
                     <>
                       <button
                         type='button'

@@ -23,7 +23,7 @@ type FormData = {
 }
 
 export function Room() {
-  const { user } = useAuth()
+  const { user, signInWithGoogle } = useAuth()
   const { register, handleSubmit, reset } = useForm<FormData>()
   const params = useParams<RoomParams>()
 
@@ -60,6 +60,10 @@ export function Room() {
     reset()
   }
 
+  async function handleSignInWithGoogle() {
+    await signInWithGoogle()
+  }
+
   async function handleLikeQuestion(
     questionId: string,
     likeId: string | undefined
@@ -86,7 +90,7 @@ export function Room() {
 
       <S.Content>
         <S.RoomTitle>
-          <h1>Sala {title}</h1>
+          <h1>{title}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </S.RoomTitle>
         <form onSubmit={handleSubmit(handleSendQuestion)}>
@@ -104,7 +108,7 @@ export function Room() {
             ) : (
               <span>
                 Para enviar uma pergunta
-                <button>faça seu login</button>
+                <button onClick={handleSignInWithGoogle}>faça seu login</button>
               </span>
             )}
 

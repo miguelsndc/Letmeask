@@ -54,6 +54,23 @@ export function AdminRoom() {
     })
   }
 
+  useEffect(() => {
+    // redirect user if not admin
+    const roomRef = database.ref(`rooms/${roomId}`)
+
+    roomRef.once('value', room => {
+      const dbRoom = room.val()
+
+      if (dbRoom.authorId !== user?.id) {
+        history.push(`/rooms/${roomId}`)
+      }
+    })
+
+    return () => {
+      roomRef.off('value')
+    }
+  }, [roomId, history, user?.id])
+
   return (
     <S.PageRoom>
       <header>

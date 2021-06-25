@@ -23,7 +23,6 @@ export const Question = styled.div<QuestionProps>`
 
   ${props =>
     props.isHighlighted &&
-    !props.isAnswered &&
     css`
       background: #f4f0ff;
       border: 1px solid ${props => props.theme.purple};

@@ -8,11 +8,19 @@ type QuestionProps = {
     name: string
     avatar: string
   }
+  isAnswered: boolean
+  isHighlighted: boolean
 }
 
-export function Question({ children, author, content }: QuestionProps) {
+export function Question({
+  children,
+  author,
+  content,
+  isAnswered = false,
+  isHighlighted = false,
+}: QuestionProps) {
   return (
-    <S.Question>
+    <S.Question isAnswered={isAnswered} isHighlighted={isHighlighted}>
       <p>{content}</p>
       <footer>
         <S.UserInfo>

@@ -15,7 +15,6 @@ import AnswerImg from '../../assets/images/answer.svg'
 import DeleteImg from '../../assets/images/delete.svg'
 
 import * as S from '../../styles/pages/Room'
-import { database } from '../../services/firebase'
 
 type RoomParams = {
   id: string
@@ -72,11 +71,11 @@ export function AdminRoom() {
       <S.Content>
         <S.RoomTitle>
           <h1>Sala {title}</h1>
-          {questions.length && <span>{questions.length} pergunta(s)</span>}
+          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </S.RoomTitle>
 
         <S.QuestionList>
-          {questions.length &&
+          {questions.length > 0 &&
             questions.map(question => {
               return (
                 <Question
@@ -93,7 +92,7 @@ export function AdminRoom() {
                         onClick={() =>
                           handleCheckQuestionAsAnswered(question.id)
                         }
-                >
+                      >
                         <img
                           src={CheckImg}
                           alt='Marcar pergunta como respondida'

@@ -121,7 +121,11 @@ export function Room() {
                   key={question.id}
                   content={question.content}
                   author={question.author}
+                  isAnswered={question.isAnswered}
+                  isHighlighted={question.isHighlighted}
                 >
+                  {question.isAnswered || (
+                    <>
                   <S.LikeButton
                     aria-label='Marcar como Gostei'
                     onClick={() =>
@@ -148,6 +152,8 @@ export function Room() {
                       />
                     </svg>
                   </S.LikeButton>
+                    </>
+                  )}
                 </Question>
               )
             })}

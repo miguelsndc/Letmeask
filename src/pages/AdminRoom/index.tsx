@@ -39,6 +39,12 @@ export function AdminRoom() {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
   }
 
+  async function handleCheckQuestionAsAnswered(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true,
+    })
+  }
+
   return (
     <S.PageRoom>
       <header>

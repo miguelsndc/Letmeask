@@ -150,3 +150,17 @@ export const LikeButton = styled.button<LikeButtonProps>`
     filter: brightness(0.5);
   }
 `
+
+export const EmptyQuestions = styled.div`
+  text-align: center;
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0.5rem;
+    margin-bottom: 0.85rem;
+  }
+
+  p {
+    color: ${props => props.theme.grayDark};
+  }
+`

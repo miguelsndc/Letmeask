@@ -114,7 +114,17 @@ export function AdminRoom() {
                   </button>
                 </Question>
               )
-            })}
+            })
+          ) : (
+            <S.EmptyQuestions>
+              <img src={EmptyQuestionsImg} alt='Nenhuma pergunta' />
+              <h2>Nenhuma pergunta por aqui...</h2>
+              <p>
+                Envie o código desta sala para seus amigos e comece a responder
+                perguntas!
+              </p>
+            </S.EmptyQuestions>
+          )}
         </S.QuestionList>
       </S.Content>
     </S.PageRoom>

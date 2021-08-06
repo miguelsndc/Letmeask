@@ -142,5 +142,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Miguel Nogueira - [Linkedin](https://www.linkedin.com/in/miguel-nogueira-a5a28a1b5/) - mglsndc@gmail.com
 
-## This project is still under development
 
